@@ -20,8 +20,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
 
   // код для задачи №2 писать здесь
-  if(percent === undefined) {
-    throw new Error('Параметр "Процентная ставка" содержит неправильное значение "test"');
-  }
+
   return totalAmount;
 }
