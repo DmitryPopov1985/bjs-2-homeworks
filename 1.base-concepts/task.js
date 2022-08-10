@@ -1,14 +1,11 @@
 "use strict"
 
 function solveEquation(a, b, c) {
-  let arr;
+  let arr = [];
   // код для задачи №1 писать здесь
-  let d;
-  d = b**2-4*a*c;
+  let d = b**2-4*a*c;
 
-  if (d < 0) {
-    arr = [];
-  } else if (d == 0) {
+  if (d == 0) {
     arr = [-b/(2*a)];
   } else if (d > 0) {
     arr = [(-b + Math.sqrt(d) )/(2*a) , (-b - Math.sqrt(d) )/(2*a)];
@@ -20,10 +17,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   
   let totalAmount;
   
-  
-  isNaN(percent) ? alert('`Параметр "Процентная ставка" содержит неправильное значение "${percent}"`') : Number(percent);
-  isNaN(contribution) ? alert('`Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`') : Number(contribution);
-  isNaN(amount) ? alert('`Параметр "Общая стоимость" содержит неправильное значение "${amount}"`') : Number(amount);
+
 
 
   let creditBody = amount - contribution;
@@ -33,7 +27,18 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   
   let monthlyPayment = creditBody * (monthlyPercent + (monthlyPercent / (((1 + monthlyPercent)**n) - 1)));
   
-  totalAmount = (Number(contribution) + (monthlyPayment * n)).toFixed(2);
+  
+
+  
+  if (isNaN(percent)) {
+    totalAmount = `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
+  } else if (isNaN(contribution)) {
+    totalAmount = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
+  } else if (isNaN(amount)) {
+    totalAmount = `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
+  } else {
+    totalAmount = (Number(contribution) + (monthlyPayment * n)).toFixed(2);
+  }
   return totalAmount;
   
 }
